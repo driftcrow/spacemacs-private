@@ -1,0 +1,15 @@
+* spacemacs 配置
+** 使用方法
+
+#+BEGIN_SRC sh
+  #clone spacemacs repo and use develop branch
+  git clone https://github.com/syl20bnr/spacemacs.git ~/.emacs.d
+  cd .emacs.d
+  git checkout --track origin/develop
+
+  #clone my private repo 
+  git clone https://github.com/driftcrow/spacemacs-private.git ~/.spacemacs.d/
+
+  #ready for use Emacs 24.5+
+#+END_SRC
+
