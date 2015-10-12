@@ -30,6 +30,7 @@ values."
      clojure
      html
      javascript
+     restclient
      git
      github
      markdown
@@ -163,7 +164,7 @@ values."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -208,6 +209,16 @@ user code."
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
+  (add-hook 'prog-mode-hook #'linum-mode)
+  (with-eval-after-load 'linum
+    (linum-relative-toggle))
+
+  ;;解决org表格里面中英文对齐的问题
+  (when (configuration-layer/layer-usedp 'chinese)
+    (when (spacemacs/system-is-mac)
+      (spacemacs//set-monospaced-font "Source Code Pro" "Hiragino Sans GB" 14 16)))
+
+  (global-company-mode t)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
