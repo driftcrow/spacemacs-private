@@ -15,7 +15,6 @@
 (setq my-misc-packages
     '(
       ;; package names go here
-      powerline
       youdao-dictionary
       ))
 
@@ -28,9 +27,6 @@
 ;;   "Initialize my package"
 ;;   )
 ;;
-
-(defun my-misc/post-init-powerline ()
-  (setq powerline-default-separator 'arrow))
 
 (defun my-misc/post-init-youdao-dictionary ()
   (evil-leader/set-key "oy" 'youdao-dictionary-search-at-point+))

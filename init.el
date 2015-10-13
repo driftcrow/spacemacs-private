@@ -224,6 +224,8 @@ layers configuration. You are free to put any user code."
   (with-eval-after-load 'linum
     (linum-relative-toggle))
 
+  (setq powerline-default-separator 'arrow)
+
   ;;解决org表格里面中英文对齐的问题
   (when (configuration-layer/layer-usedp 'chinese)
     (when (spacemacs/system-is-mac)
