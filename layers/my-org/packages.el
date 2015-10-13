@@ -52,7 +52,7 @@
 
 (defun my-org/post-init-org ()
   (progn
-
+    (setq org-directory "~/org")
     (setq org-default-notes-file (expand-file-name "inbox.org" org-directory))
     (setq org-default-journal-file (expand-file-name "journal.org.gpg" org-directory))
     (setq org-agenda-files  (list org-directory
