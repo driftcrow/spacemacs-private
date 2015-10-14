@@ -48,6 +48,7 @@ values."
      git
      github
      search-engine
+     gtags
      (colors :variables
              colors-enable-nyan-cat-progress-bar t)
      (chinese :variables chinese-default-input-method 'wubi
@@ -153,7 +154,7 @@ values."
    dotspacemacs-helm-position 'bottom
    ;; If non nil the paste micro-state is enabled. When enabled pressing `p`
    ;; several times cycle between the kill ring content. (default nil)
-   dotspacemacs-enable-paste-micro-state nil
+   dotspacemacs-enable-paste-micro-state t 
    ;; Which-key delay in seconds. The which-key buffer is the popup listing
    ;; the commands bound to the current keystroke sequence. (default 0.4)
    dotspacemacs-which-key-delay 0.4
@@ -214,6 +215,9 @@ values."
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
+  ;; config changes made through the customize UI will be store here
+  (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
+  (load custom-file -1)
   )
 
 (defun dotspacemacs/user-config ()
@@ -232,14 +236,15 @@ layers configuration. You are free to put any user code."
       (spacemacs//set-monospaced-font "Source Code Pro" "Hiragino Sans GB" 14 16)))
 
   (when (spacemacs/system-is-mswindows)
-    (set-fontset-font "fontset-default" 'gb18030' ("Microsoft YaHei" . "unicode-bmp")))
+    (set-fontset-font "fontset-default" 'gb18030' ("Microsoft YaHei" . "unicode-bmp"))
+    (setq-default dotspacemacs-smooth-scrolling nil))
  
   (global-company-mode t)
 
+  ;; gtags layer enable mode
+
   (setq paradox-github-token "d2a428db66b59096e93a7210090f20e617cbcea3")
-  ;; config changes made through the customize UI will be store here
-  (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
-  (load custom-file -1)
+
 )
 
 ;; Do not write anything past this comment. This is where Emacs will

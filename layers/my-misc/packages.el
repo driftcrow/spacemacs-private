@@ -16,6 +16,7 @@
     '(
       ;; package names go here
       youdao-dictionary
+      helm-gtags
       ))
 
 ;; List of packages to exclude.
@@ -31,6 +32,12 @@
 (defun my-misc/post-init-youdao-dictionary ()
   (evil-leader/set-key "oy" 'youdao-dictionary-search-at-point+))
 
+(defun my-misc/post-init-helm-gtags ()
+  (progn
+    (spacemacs/helm-gtags-define-keys-for-mode 'emacs-lisp-mode)
+    (spacemacs/helm-gtags-define-keys-for-mode 'clojure-mode)
+    (spacemacs/helm-gtags-define-keys-for-mode 'python-mode)
+     ))
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
 ;; https://github.com/jwiegley/use-package
