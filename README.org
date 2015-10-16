@@ -9,6 +9,8 @@
 
   #clone my private repo 
   git clone https://github.com/driftcrow/spacemacs-private.git ~/.spacemacs.d/
+  cd .spacemacs.d
+  git checkout --track origin/develop
 
   #ready for use Emacs 24.5+
 #+END_SRC

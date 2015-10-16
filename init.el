@@ -244,8 +244,6 @@ layers configuration. You are free to put any user code."
  
   (global-company-mode t)
 
-  ;; gtags layer enable mode
-
   (setq paradox-github-token "d2a428db66b59096e93a7210090f20e617cbcea3")
 
 )

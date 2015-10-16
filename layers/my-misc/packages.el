@@ -17,6 +17,7 @@
       ;; package names go here
       lispy
 
+      chinese-wbim
       youdao-dictionary
       helm-gtags
       helm-github-stars
@@ -36,11 +37,17 @@
   (evil-leader/set-key "oy" 'youdao-dictionary-search-at-point+))
 
 (defun my-misc/post-init-helm-gtags ()
-  (progn
-    (spacemacs/helm-gtags-define-keys-for-mode 'emacs-lisp-mode)
-    (spacemacs/helm-gtags-define-keys-for-mode 'clojure-mode)
-    (spacemacs/helm-gtags-define-keys-for-mode 'python-mode)
-     ))
+  (use-package helm-gtags
+    :diminish helm-gtags-mode
+    :defer
+    :config
+    (progn
+      (spacemacs/helm-gtags-define-keys-for-mode 'emacs-lisp-mode)
+      (spacemacs/helm-gtags-define-keys-for-mode 'clojure-mode)
+      (spacemacs/helm-gtags-define-keys-for-mode 'python-mode)
+      (evil-make-overriding-map helm-gtags-mode-map 'normal)
+      (add-hook 'helm-gtags-mode-hook #'evil-normalize-keymaps))))
+
 
 (defun my-misc/init-helm-github-stars ()
   (use-package helm-github-stars
@@ -71,6 +78,20 @@
       (add-hook 'scheme-mode-hook (lambda () (lispy-mode 1)))
       (add-hook 'cider-repl-mode-hook (lambda () (lispy-mode 1))))))
 
+(defun my-misc/post-init-chinese-wbim ()
+  (progn
+    ;; [[http://emacs.stackexchange.com/questions/352/how-to-override-major-mode-bindings][keymap - How to override major mode bindings - Emacs Stack Exchange]]
+    ;; (bind-key* ";" 'chinese-wbim-insert-ascii)
+    (setq chinese-wbim-punc-translate-p nil)
+    (evil-leader/set-key
+      "otp" 'chinese-wbim-punc-translate-toggle)
+    (setq chinese-wbim-wb-use-gbk t)
+    (add-hook 'chinese-wbim-wb-load-hook
+              (lambda ()
+                (let ((map (chinese-wbim-mode-map)))
+                  (define-key map "-" 'chinese-wbim-previous-page)
+                  (define-key map "=" 'chinese-wbim-next-page))))
+    ))
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
 ;; https://github.com/jwiegley/use-package
