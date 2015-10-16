@@ -15,8 +15,11 @@
 (setq my-misc-packages
     '(
       ;; package names go here
+      lispy
+
       youdao-dictionary
       helm-gtags
+      helm-github-stars
       ))
 
 ;; List of packages to exclude.
@@ -38,6 +41,36 @@
     (spacemacs/helm-gtags-define-keys-for-mode 'clojure-mode)
     (spacemacs/helm-gtags-define-keys-for-mode 'python-mode)
      ))
+
+(defun my-misc/init-helm-github-stars ()
+  (use-package helm-github-stars
+    :defer t
+    :config
+    (progn
+      (setq helm-github-stars-username "driftcrow")
+      (evil-leader/set-key "og" 'helm-github-stars)
+      (setq helm-github-stars-cache-file "~/.emacs.d/.cache/hgs-cache"))))
+
+
+(defun my-misc/init-lispy ()
+  "Initialize lispy"
+  (use-package lispy
+    :defer t
+    :diminish (lispy-mode)
+    :config
+    (progn
+      (define-key lispy-mode-map (kbd "s-1") 'lispy-describe-inline)
+      (define-key lispy-mode-map (kbd "s-2") 'lispy-arglist-inline))
+    :init
+    (progn
+      ;; (define-key evil-insert-state-map (kbd "C-y") 'lispy-yank)
+      ;; (define-key evil-insert-state-map (kbd "C-d") 'lispy-delete)
+      (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))
+      (add-hook 'spacemacs-mode-hook (lambda () (lispy-mode 1)))
+      (add-hook 'clojure-mode-hook (lambda () (lispy-mode 1)))
+      (add-hook 'scheme-mode-hook (lambda () (lispy-mode 1)))
+      (add-hook 'cider-repl-mode-hook (lambda () (lispy-mode 1))))))
+
 ;; Often the body of an initialize function uses `use-package'
 ;; For more info on `use-package', see readme:
 ;; https://github.com/jwiegley/use-package
