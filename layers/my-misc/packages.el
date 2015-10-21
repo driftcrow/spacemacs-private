@@ -21,6 +21,8 @@
       youdao-dictionary
       helm-gtags
       helm-github-stars
+
+      midje-mode
       ))
 
 ;; List of packages to exclude.
@@ -77,6 +79,12 @@
       (add-hook 'clojure-mode-hook (lambda () (lispy-mode 1)))
       (add-hook 'scheme-mode-hook (lambda () (lispy-mode 1)))
       (add-hook 'cider-repl-mode-hook (lambda () (lispy-mode 1))))))
+
+(defun my-misc/init-midje-mode ()
+  (use-package midje-mode
+    :defer t
+    :init
+    (add-hook 'clojure-mode-hook 'midje-mode)))
 
 (defun my-misc/post-init-chinese-wbim ()
   (progn
