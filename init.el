@@ -53,6 +53,7 @@ values."
              colors-enable-nyan-cat-progress-bar t)
      (chinese :variables chinese-default-input-method 'wubi
               chinese-enable-youdao-dict t)
+     eyebrowse
      my-misc
      )
    ;; List of additional packages that will be installed without being
@@ -162,7 +163,7 @@ values."
    ;; `right-then-bottom'. right-then-bottom tries to display the frame to the
    ;; right; if there is insufficient space it displays it at the bottom.
    ;; (default 'bottom)
-   dotspacemacs-which-key-position 'bottom
+   dotspacemacs-which-key-position 'right-then-bottom
    ;; If non nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
    ;; nil to boost the loading time. (default t)

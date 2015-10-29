@@ -15,4 +15,48 @@
   #ready for use Emacs 24.5+
 #+END_SRC
 
+** Suggested external programs
+  :PROPERTIES:
+  :CUSTOM_ID: suggested-external-programs
+  :END:
+Some of the requirements listed in [[#requirements][Requirements]] make use of software that must be installed outside of emacs. And of course you will need emacs itself! 
+
+*** External program download and installation
+:PROPERTIES:
+:CUSTOM_ID: external-program-download-and-installation
+:END:
+While emacs alone is very powerful, one of it's most important strengths is its ability to inter-operate with other software programs. Links to the download pages for several programs that can be used from with emacs are provided below (they are also very useful on their own!). Installation of all these programs follows normal conventions on each platform, just download, run the installer, and follow the instructions.
+
+**** Windows
+:PROPERTIES:
+:CUSTOM_ID: windows
+:END:
+- Emacs :: http://vgoulet.act.ulaval.ca/en/emacs/
+- R :: http://cran.r-project.org/bin/windows/base/
+- LaTeX :: http://miktex.org/download
+- git :: http://git-scm.com/download/win
+- Pandoc :: https://github.com/jgm/pandoc/releases
+- GhostScript :: http://www.ghostscript.com/download/gsdnld.html (Make sure to *install the 32 bit version*!)
+
+**** OSX
+:PROPERTIES:
+:CUSTOM_ID: osx
+:END:
+- Emacs :: http://vgoulet.act.ulaval.ca/en/emacs/
+- R :: http://cran.r-project.org/bin/macosx/
+- LaTeX :: http://tug.org/mactex/
+- git :: http://git-scm.com/download/mac
+- Pandoc :: https://github.com/jgm/pandoc/releases
+- GhostScript :: http://pages.uoregon.edu/koch/
+
+**** Linux
+:PROPERTIES:
+:CUSTOM_ID: linux
+:END:
+- Emacs :: Use your package manager, or see http://www.gnu.org/software/emacs/#Obtaining
+- R :: Use your package manager, or see http://cran.r-project.org/bin/linux/
+- LaTeX :: Use your package manager, or see https://www.tug.org/texlive/quickinstall.html
+- git :: Use your package manager, or see http://git-scm.com/download/linux
+- Pandoc :: Use your package manager, or see http://johnmacfarlane.net/pandoc/installing.html#all-platforms
+- GhostScript :: Use your package manager, or see http://www.ghostscript.com/download/gsdnld.html
 
