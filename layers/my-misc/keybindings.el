@@ -4,6 +4,8 @@
 
 (evil-leader/set-key "hh" 'my-misc/hotspots)
 
+(evil-leader/set-key "fF" 'find-file-other-window)
+
 ;; A complementary binding to the apropos-command (C-h a)
 (define-key 'help-command "A" 'apropos)
 

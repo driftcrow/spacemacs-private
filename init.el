@@ -54,6 +54,7 @@ values."
      (chinese :variables chinese-default-input-method 'wubi
               chinese-enable-youdao-dict t)
      eyebrowse
+     framer
      my-misc
      )
    ;; List of additional packages that will be installed without being

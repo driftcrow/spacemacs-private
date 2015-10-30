@@ -2,8 +2,9 @@
 ** TODO  gtags pygment plug works not fine on windows      <2015-10-14 Wed 20:50>
  
  Link: file:~/.spacemacs.d/layers/my-misc/packages.el::(defun%20my-misc/post-init-helm-gtags%20()
-** TODO  not concert powerline scale, GUI not fine on OSX<2015-10-14 Wed 20:52>
- 
+** CANCELLED not concert powerline scale, GUI not fine on OSX<2015-10-14 Wed 20:52>
+CLOSED: [2015-10-30 Fri 08:53]
+- State "CANCELLED"  from "TODO"       [2015-10-30 Fri 08:53]
  Link: file:~/.spacemacs.d/init.el::(when%20(spacemacs/system-is-mac)
 ** TODO  认真学习 lispy mode 的使用      <2015-10-17 Sat 16:43>
  
