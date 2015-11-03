@@ -1,5 +1,10 @@
 # Compiled
 *.elc
+*.log
+*.out
+*.aux
+*.gz
+auto/
 
 # Packaging
 .cask
