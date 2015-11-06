@@ -100,11 +100,13 @@
   \end{keys}
 
   \begin{keys}{Basic}
-    Execute command by name & \texttt{M-x / SPC :} \\
-    Cancel command          & \texttt{C-g / f d}   \\
-    Exit Emacs              & \texttt{C-x C-c}     \\
-    Leader keys             & \texttt{SPC / M-m}   \\
-    Universal argument      & \texttt{SPC u}       \\
+    Vim(ex-command)    & \texttt{:}           \\
+    Execute command    & \texttt{M-x / SPC :} \\
+    Cancel command     & \texttt{C-g / f d}   \\
+    Exit Emacs         & \texttt{C-x C-c}     \\
+    Leader keys        & \texttt{SPC / M-m}   \\
+    Universal argument & \texttt{SPC u}       \\
+    Major mode prefix  & \texttt{SPC m / ,}   \\
   \end{keys}
 
   \begin{keys}{Help}
@@ -113,6 +115,7 @@
     describe a variable        & \texttt{SPC h d v}     \\
     describe mode              & \texttt{SPC h d m}     \\
     Key bindings discovery     & \texttt{? ( postfix )} \\
+    Evil tutor                 & \texttt{SPC h T}       \\
   \end{keys}
 
   \begin{keys}{Text object}
@@ -123,8 +126,8 @@
     Inner/Outer paragraph      & \texttt{ip / ap}                 \\
     Inner/Outer tags           & \texttt{it / at}                 \\
     Inner/Outer argument       & \texttt{ia / aa}                 \\
-    Inner/Outer block star     & \texttt{i8 / a8}                 \\
     Inner/Outer delimiters     & \texttt{i/a b() []  B\{\} <>}    \\
+    Inner/Outer between /* */  & \texttt{i8 / a8}                 \\
     Inner/Outer between symbol & \texttt{i/a * \% | \$  ` '  \" } \\
     Inner/Outer indent object  & \texttt{i/a i I J}               \\
     Inner buffer               & \texttt{ig}                      \\
@@ -148,14 +151,33 @@
     Select next s-expression       & \texttt{M-S-Space} \\
   \end{keys}
 
-  \begin{keys}{Files}
-    Find (open) file                  & \texttt{SPC f f} \\
-    Save file                         & \texttt{SPC f s} \\
-    Find recent file                  & \texttt{SPC f r} \\
-    Find file in project              & \texttt{SPC p f} \\
+  \begin{keys}{Code navigation}
+    Go to alternate file          & \texttt{SPC m g a} \\
+    Go back                       & \texttt{SPC m g b} \\
+    Go to things under point      & \texttt{SPC m g g} \\
+    Go to things other window     & \texttt{SPC m g G} \\
+    Go to corresponding test file & \texttt{SPC m g t} \\
   \end{keys}
 
-  \columnbreak\
+  \begin{keys}{Helm}
+
+    - - - Micro-state             &                            \\
+    Initiate the micro-state      & \texttt{M-SPC / CMD-M-SPC} \\
+    Go to previous/next candidate & \texttt{k/j}               \\
+    Go to previous/next source    & \texttt{h/l}               \\
+    Exclute action 0...9          & \texttt{1...0}             \\
+    Switch go action page         & \texttt{a}                 \\
+    Mark current candidates       & \texttt{t}                 \\
+    Mark all candidates           & \texttt{T}                 \\
+  \end{keys}
+
+  \begin{keys}{Files}
+    Find (open) file     & \texttt{SPC f f} \\
+    Save file            & \texttt{SPC f s} \\
+    Find recent file     & \texttt{SPC f r} \\
+    Find file in project & \texttt{SPC p f} \\
+    Find file at point   & \texttt{g f}     \\
+  \end{keys}
 
   \begin{keys}{Search}
     Search forward, next match         & \texttt{C-s} \\
@@ -208,6 +230,24 @@
     Multiple cursors: mark all like this & \texttt{C-x m} \\
   \end{keys}
 
+  \begin{keys}{Toggle}
+    Toggle fill column                  & \texttt{SPC t f}   \\
+    Toggle highlight indentation levels & \texttt{SPC t h i} \\
+    Toggle indentation guide            & \texttt{SPC t i}   \\
+    Toggle truncate lines               & \texttt{SPC t l}   \\
+    Toggle line numbers                 & \texttt{SPC t n}   \\
+    Toggle frame maximize               & \texttt{SPC T M}   \\
+    Toggle full screen                  & \texttt{SPC T F}   \\
+    - - -                                 &                    \\
+    Toggle auto-fill mode          & \texttt{SPC t F}     \\
+    Toggle syntax checking mode    & \texttt{SPC t s}     \\
+    Toggle spell checking mode     & \texttt{SPC t S}     \\
+    Toggle gold-ratio mode         & \texttt{SPC t g}     \\
+    Toggle which-key mode          & \texttt{SPC t K}     \\
+    Toggle whitespace mode/global  & \texttt{SPC t W/C-W} \\
+    Toggle smartparens mode/global & \texttt{SPC t p/C-p} \\
+  \end{keys}
+
   \centering\section{Lisp}
 
   \begin{keys}{SLIME}
@@ -232,8 +272,6 @@
     Split s-expression                   & \texttt{M-S-s} \\
     Barf/slurp forward                   & \texttt{C-left / C-right} \\
   \end{keys}
-
-  \columnbreak\
 
   \centering\section{Version control}
 
