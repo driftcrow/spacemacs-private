@@ -15,7 +15,7 @@
 (setq my-misc-packages
     '(
       ;; package names go here
-      lispy
+      ;; lispy                             ; conflic with imenu
 
       chinese-wbim
       youdao-dictionary
@@ -54,7 +54,8 @@
 
 (defun my-misc/init-helm-github-stars ()
   (use-package helm-github-stars
-    :defer t
+    :init
+    (evil-leader/set-key "ag" 'helm-github-stars)
     :config
     (progn
       (setq helm-github-stars-username "driftcrow")
@@ -106,7 +107,8 @@
 
 (defun my-misc/init-elfeed ()
   (use-package elfeed
-    :defer t
+    :init
+    (evil-leader/set-key "ae" 'elfeed)
     :config
     (progn
       (setq elfeed-feeds
@@ -131,11 +133,11 @@
               "http://angelic-sedition.github.io/atom.xml"))
 
       ;; (evilify elfeed-search-mode elfeed-search-mode-map)
-      (spacemacs|evilify-map elfeed-search-mode-map
-        :mode elfeed-search-mode
-        :bindings
-        "G" 'elfeed-update
-        "g" 'elfeed-search-update--force)
+      ;; (spacemacs|evilify-map elfeed-search-mode-map
+      ;;   :mode elfeed-search-mode
+      ;;   :bindings
+      ;;   "G" 'elfeed-update
+      ;;   "g" 'elfeed-search-update--force)
 
       (defun elfeed-mark-all-as-read ()
         (interactive)

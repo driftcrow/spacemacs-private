@@ -55,6 +55,7 @@ values."
               chinese-enable-youdao-dict t)
      eyebrowse
      framer
+     my-calendar
      my-misc
      )
    ;; List of additional packages that will be installed without being

@@ -19,13 +19,17 @@
 \usepackage{tikz}
 \usepackage{environ}
 \usepackage{hyperref}
+\usepackage{pifont}
+\DeclareUnicodeCharacter{01C1}{$\mathbin{|}|$}
+\DeclareUnicodeCharacter{2194}{$\textrm{\ding{214}}$}
 
 \usetikzlibrary{calc}
 \pgfdeclarelayer{background}
 \pgfdeclarelayer{foreground}
 \pgfsetlayers{background,main,foreground}
 
-\geometry{top=-0.5cm,left=1cm,right=1cm,bottom=1cm}
+% \geometry{top=-0.5cm,left=1cm,right=1cm,bottom=1cm}
+\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm}
 
 \pagestyle{empty} % Turn off header and footer
 
@@ -100,13 +104,13 @@
   \end{keys}
 
   \begin{keys}{Basic}
-    Vim(ex-command)    & \texttt{:}           \\
-    Execute command    & \texttt{M-x / SPC :} \\
-    Cancel command     & \texttt{C-g / f d}   \\
-    Exit Emacs         & \texttt{C-x C-c}     \\
-    Leader keys        & \texttt{SPC / M-m}   \\
-    Universal argument & \texttt{SPC u}       \\
-    Major mode prefix  & \texttt{SPC m / ,}   \\
+    Vim(ex-command)    & \texttt{:}                \\
+    Execute command    & \texttt{M-x ↔ SPC :} \\
+    Cancel command     & \texttt{C-g ↔ f d}   \\
+    Exit Emacs         & \texttt{C-x C-c }          \\
+    Leader keys        & \texttt{SPC ↔ M-m}        \\
+    Universal argument & \texttt{SPC u}            \\
+    Major mode prefix  & \texttt{SPC m ↔ ,}        \\
   \end{keys}
 
   \begin{keys}{Help}
@@ -114,31 +118,32 @@
     describe a function        & \texttt{SPC h d f}     \\
     describe a variable        & \texttt{SPC h d v}     \\
     describe mode              & \texttt{SPC h d m}     \\
+    Helm describe key bindings & \texttt{SPC ?} \\
     Key bindings discovery     & \texttt{? ( postfix )} \\
     Evil tutor                 & \texttt{SPC h T}       \\
   \end{keys}
 
   \begin{keys}{Text object}
-    Inner/Outer word           & \texttt{iw / aw}                 \\
-    Inner/Outer WORD           & \texttt{iW / aW}                 \\
-    Inner/Outer symbol         & \texttt{io / ao}                 \\
-    Inner/Outer sentence       & \texttt{is / as}                 \\
-    Inner/Outer paragraph      & \texttt{ip / ap}                 \\
-    Inner/Outer tags           & \texttt{it / at}                 \\
-    Inner/Outer argument       & \texttt{ia / aa}                 \\
-    Inner/Outer delimiters     & \texttt{i/a b() []  B\{\} <>}    \\
-    Inner/Outer between /* */  & \texttt{i8 / a8}                 \\
-    Inner/Outer between symbol & \texttt{i/a * \% | \$  ` '  \" } \\
-    Inner/Outer indent object  & \texttt{i/a i I J}               \\
+    Inner/Outer word           & \texttt{iǁa w}                 \\
+    Inner/Outer WORD           & \texttt{iǁa W}                 \\
+    Inner/Outer symbol         & \texttt{iǁa o}                 \\
+    Inner/Outer sentence       & \texttt{iǁa s}                 \\
+    Inner/Outer paragraph      & \texttt{iǁa p}                 \\
+    Inner/Outer tags           & \texttt{iǁa t}                 \\
+    Inner/Outer argument       & \texttt{iǁa a}                 \\
+    Inner/Outer delimiters     & \texttt{iǁa b() []  B\{\} <>}    \\
+    Inner/Outer between /* */  & \texttt{iǁa 8}                 \\
+    Inner/Outer between symbol & \texttt{iǁa * \% | \$  ` '  \" } \\
+    Inner/Outer indent object  & \texttt{iǁa i I J}               \\
     Inner buffer               & \texttt{ig}                      \\
   \end{keys}
   May be used by d / c / y / v and evil-surround (cs / ds / ys ) operations.
 
   \begin{keys}{Navigation}
-    Previous/next character      & \texttt{h / l} \\
-    Previous/next line           & \texttt{k / j} \\
-    Previous/next word           & \texttt{M-left / M-right} \\
-    Previous/next current symbol & \texttt{M-a / M-e} \\
+    Previous/next character      & \texttt{h ǁ l} \\
+    Previous/next line           & \texttt{k ǁ j} \\
+    Previous/next word           & \texttt{M-left ǁ M-right} \\
+    Previous/next current symbol & \texttt{M- aǁe} \\
     Previous/next s-expression   & \texttt{C-M-b / C-M-f} \\
     Previous/next defun          & \texttt{C-M-a / C-M-e} \\
     Previous/next page           & \texttt{C-v / M-v} \\
@@ -162,43 +167,43 @@
   \begin{keys}{Helm}
 
     - - - Micro-state             &                            \\
-    Initiate the micro-state      & \texttt{M-SPC / CMD-M-SPC} \\
+    Initiate the micro-state      & \texttt{M-SPC ǁ CMD-M-SPC} \\
     Go to previous/next candidate & \texttt{k/j}               \\
     Go to previous/next source    & \texttt{h/l}               \\
-    Exclute action 0...9          & \texttt{1...0}             \\
-    Switch go action page         & \texttt{a}                 \\
-    Mark current candidates       & \texttt{t}                 \\
-    Mark all candidates           & \texttt{T}                 \\
+    Exclute action 0...9          & \texttt{1 ... 0}             \\
+    switch go action page         & \texttt{a}                 \\
+    mark current candidates       & \texttt{t}                 \\
+    mark all candidates           & \texttt{t}                 \\
   \end{keys}
 
-  \begin{keys}{Files}
-    Find (open) file     & \texttt{SPC f f} \\
-    Save file            & \texttt{SPC f s} \\
-    Find recent file     & \texttt{SPC f r} \\
-    Find file in project & \texttt{SPC p f} \\
-    Find file at point   & \texttt{g f}     \\
+  \begin{keys}{files}
+    find (open) file     & \texttt{spc f f} \\
+    save file            & \texttt{spc f s} \\
+    find recent file     & \texttt{spc f r} \\
+    find file in project & \texttt{spc p f} \\
+    find file at point   & \texttt{g f}     \\
   \end{keys}
 
-  \begin{keys}{Search}
-    Search forward, next match         & \texttt{C-s} \\
-    Search backward, prev match        & \texttt{C-r} \\
-    Occur (show all matches)           & \texttt{M-o} \\
-    Grep                               & \texttt{M-x rgrep} \\
-    Interactive grep in project (Helm) & \texttt{M-h} \\
-    Helm-grep: preview match at point  & \texttt{C-z} \\
+  \begin{keys}{search}
+    search forward, next match         & \texttt{c-s} \\
+    search backward, prev match        & \texttt{c-r} \\
+    occur (show all matches)           & \texttt{m-o} \\
+    grep                               & \texttt{m-x rgrep} \\
+    interactive grep in project (helm) & \texttt{m-h} \\
+    helm-grep: preview match at point  & \texttt{c-z} \\
   \end{keys}
 
-  \begin{keys}{Replace}
-    Interactive replace        & \texttt{M-\%} \\
-    Replace current occurrence & \texttt{y} \\
-    Skip current occurrence    & \texttt{n} \\
-    Replace all occurrences    & \texttt{!} \\
+  \begin{keys}{replace}
+    interactive replace        & \texttt{m-\%} \\
+    replace current occurrence & \texttt{y} \\
+    skip current occurrence    & \texttt{n} \\
+    replace all occurrences    & \texttt{!} \\
   \end{keys}
 
 
-  \begin{keys}{Buffers}
-    Previous/next buffer & \texttt{C-, / C-.} \\
-    Jump to buffer       & \texttt{C-x b / M-m} \\
+  \begin{keys}{buffers}
+    previous/next buffer & \texttt{c-, / c-.} \\
+    jump to buffer       & \texttt{c-x b / m-m} \\
     List buffers         & \texttt{C-x C-l} \\
     Kill buffer          & \texttt{C-x k} \\
   \end{keys}
@@ -324,10 +329,31 @@
     Time-machine: quit               & \texttt{q} \\
   \end{keys}
 
+  \centering\section{Org mode}
+
+  \begin{keys}{Navigation}
+    Magit status                      & \texttt{C-x g} \\
+    Move up/down                      & \texttt{p / n} \\
+    Change current section visibility & \texttt{1 / 2 / 4} \\
+    Change all sections visibility    & \texttt{M-1 / M-2 / M-4} \\
+    Collapse or expand section        & \texttt{TAB} \\
+    Stage file or chunk               & \texttt{s} \\
+    Unstage file or chunk             & \texttt{u} \\
+    Discard uncommited file or chunk  & \texttt{k} \\
+    Commit staged                     & \texttt{c c} \\
+    Commit mode: confirm commit       & \texttt{C-c C-c} \\
+    Commit mode: cancel commit        & \texttt{C-c C-a} \\
+    Pull into current branch          & \texttt{F F} \\
+    Push current branch               & \texttt{P P} \\
+    Merge into current branch         & \texttt{m m} \\
+    Show process buffer               & \texttt{\$} \\
+    Quit                              & \texttt{q} \\
+  \end{keys}
 % \rule{0.3\linewidth}{0.25pt}
 \scriptsize
 
-Copyright \copyright\ 2015 
+Copyright \copyright\ 2015
+
 
 \href{https://github.com/syl20bnr/spacemacs/}{https://github.com/syl20bnr/spacemacs/}
 
@@ -335,3 +361,12 @@ Copyright \copyright\ 2015
 \end{multicols}
 
 \end{document}
+
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-master: t
+%%% TeX-command-extra-options: "-shell-escape"
+%%% TeX-engine: xetex
+%%% End:
