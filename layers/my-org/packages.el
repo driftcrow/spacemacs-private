@@ -100,7 +100,7 @@
              "* TODO %?\n  %i\n"
              :empty-lines 1)
             ("n" "notes" entry (file+headline  org-default-notes-file "Quick notes")
-             "* TODO %?\n  %i\n %U"
+             "* %?\n  %i\n %U"
              :empty-lines 1)
             ("b" "Blog Ideas" entry (file+headline  org-default-notes-file "Blog Ideas")
              "* TODO %?\n  %i\n %U"
@@ -135,7 +135,13 @@
             ("W" "Weekly Review"
              ((stuck "")            ;; review stuck projects as designated by org-stuck-projects
               (tags-todo "PROJECT") ;; review all projects (assuming you use todo keywords to designate projects)
-              ))))
+              ))
+            ("D" "Daily Action List"
+             ((agenda "" ((org-agenda-ndays 1)
+                          (org-agenda-sorting-strategy
+                           (quote ((agenda time-up priority-down tag-up) )))
+                          (org-deadline-warning-days 0)
+                          ))))))
 
     (defun org-summary-todo (n-done n-not-done)
       "Switch entry to DONE when all subentries are done, to TODO otherwise."
@@ -143,6 +149,7 @@
         (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
     
     (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
+
     ;; used by org-clock-sum-today-by-tags
     (defun filter-by-tags ()
       (let ((head-tags (org-get-tags-at)))
