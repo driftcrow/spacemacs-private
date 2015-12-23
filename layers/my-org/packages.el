@@ -15,7 +15,8 @@
 (setq my-org-packages
     '(
       ;; package names go here
-      org
+      ;; org
+      (org :location built-in)
       org-bullets
       ox-reveal
       org-mac-link
@@ -63,9 +64,10 @@
     (setq org-agenda-use-tag-inheritance nil) ;; 3-4x speedup
     (setq org-agenda-window-setup 'current-window)
     (setq org-log-done t)
+    (setq org-log-into-drawer t)
 
     (setq org-todo-keywords
-          (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
+          (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/@)")
                   (sequence "WAITING(w@/!)" "SOMEDAY(S)"  "|" "CANCELLED(c@/!)" "MEETING(m)" "PHONE(p)"))))
 
     ;; 加密文章
