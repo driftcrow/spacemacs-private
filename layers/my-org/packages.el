@@ -55,6 +55,7 @@
   (progn
     (setq org-directory "~/org")
     (setq org-default-notes-file (expand-file-name "inbox.org" org-directory))
+    (setq org-default-works-file (expand-file-name "works.org" org-directory))
     (setq org-default-journal-file (expand-file-name "journal.org.gpg" org-directory))
     (setq org-agenda-files  (list org-directory
                                   ;; (expand-file-name "works" org-directory)
@@ -101,21 +102,18 @@
           '(("t" "Todo" entry (file+headline  org-default-notes-file "Daily Tasks")
              "* TODO %?\n  %i\n"
              :empty-lines 1)
-            ("n" "notes" entry (file+headline  org-default-notes-file "Quick notes")
-             "* %?\n  %i\n %U"
+            ("n" "Note" entry (file+headline  org-default-notes-file "Quick notes")
+             "*  %? :NOTE:\n%U\n%a\n"
              :empty-lines 1)
             ("b" "Blog Ideas" entry (file+headline  org-default-notes-file "Blog Ideas")
              "* TODO %?\n  %i\n %U"
              :empty-lines 1)
-            ("w" "work" entry (file+headline  org-default-notes-file "Netmanager")
-             "* TODO %?\n  %i\n %U"
+            ("w" "Works Log"
+             entry (file+datetree+prompt org-default-works-file )
+             "* %?\nEntered on %U\n"
              :empty-lines 1)
-            ("c" "Chrome" entry (file+headline  org-default-notes-file "Quick notes")
-             "* TODO %?\n %(my-org/retrieve-chrome-current-tab-url)\n %i\n %U"
-             :empty-lines 1)
-            ("l" "links" entry (file+headline org-default-notes-file "Quick notes")
-             "* TODO %?\n  %i\n %a \n %U"
-             :empty-lines 1)
+            ("h" "Habit" entry (file (expand-file-name "habit.org" org-directory))
+             "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n")
             ("j" "Journal Entry"
              entry (file+datetree+prompt org-default-journal-file )
              "* %?\nEntered on %U\n"
@@ -138,6 +136,13 @@
              ((stuck "")            ;; review stuck projects as designated by org-stuck-projects
               (tags-todo "PROJECT") ;; review all projects (assuming you use todo keywords to designate projects)
               ))
+            ("N" "Notes" tags "NOTE"
+             ((org-agenda-overriding-header "Notes")
+              (org-tags-match-list-sublevels t)))
+            ("h" "Habits" tags-todo "STYLE=\"habit\""
+             ((org-agenda-overriding-header "Habits")
+              (org-agenda-sorting-strategy
+               '(todo-state-down effort-up category-keep))))
             ("D" "Daily Action List"
              ((agenda "" ((org-agenda-ndays 1)
                           (org-agenda-sorting-strategy
@@ -236,6 +241,7 @@
                                         \\usepackage[normalem]{ulem}
                                         \\usepackage{amsmath}
                                         \\usepackage{textcomp}
+                                        \\usepackage{geometry}
                                         \\usepackage{marvosym}
                                         \\usepackage{wasysym}
                                         \\usepackage{amssymb}
@@ -244,6 +250,7 @@
                                         \\tolerance=1000
                                         \\usepackage{listings}
                                         \\usepackage{xcolor}
+                                        \\geometry{a4paper, textwidth=6.5in, textheight=10in,marginparsep=7pt, marginparwidth=.6in}
                                         \\lstset{
                                         %行号
                                         numbers=left,

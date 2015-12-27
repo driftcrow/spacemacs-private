@@ -29,7 +29,7 @@ values."
      autohotkey
      emacs-lisp
      python
-     clojure
+     (clojure :variables clojure-enable-fancify-symbols t)
      html
      javascript
      restclient
@@ -37,24 +37,35 @@ values."
      org
      my-org
      latex
+     (vinegar :variables vinegar-reuse-dired-buffer t)
 
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
-     ;; spell-checking
-     ;; syntax-checking
+     (syntax-checking :variables syntax-checking-enable-by-default nil)
+     (spell-checking :variables spell-checking-enable-by-default nil)
      osx
      version-control
-     git
+     (git :variables
+          git-magit-status-fullscreen t
+          magit-push-always-verify nil
+          magit-save-repository-buffers 'dontask
+          magit-revert-buffers 'silent
+          magit-refs-show-commit-count 'all
+          ;; This is really creepy magit
+          magit-revision-show-gravatars nil)
      github
      search-engine
+     ranger
      gtags
+     (spacemacs-layouts :variables layouts-enable-autosave t
+                        layouts-autosave-delay 300)
      (colors :variables
              colors-enable-nyan-cat-progress-bar t)
      (chinese :variables chinese-default-input-method 'wubi
               chinese-enable-youdao-dict t)
-     eyebrowse
-     framer
+     ;; eyebrowse
+     ;; framer
      my-calendar
      my-misc
      )
