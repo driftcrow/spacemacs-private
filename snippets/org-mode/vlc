@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: LaTeX class
+# key: vlc
+# contributor: dirftcrow (driftcrow@gmail.com)
+# --
+#+LATEX_CLASS: ${1:$$(yas/choose-value '("report" "book" "article"))}
