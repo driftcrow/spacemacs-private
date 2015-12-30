@@ -9,3 +9,11 @@ CLOSED: [2015-10-30 Fri 08:53]
 ** TODO  认真学习 lispy mode 的使用      <2015-10-17 Sat 16:43>
  
  Link: file:~/.spacemacs.d/layers/my-misc/packages.el
+** TODO   更换默认的词库为极点的     <2015-12-25 Fri 10:25>
+
+ Link: file:~/.spacemacs.d/init.el::(chinese%20:variables%20chinese-default-input-method%20'wubi
+** TODO   优化 org-mode 配置     <2015-12-28 Mon 09:05>
+
+ Link: file:~/.spacemacs.d/TODO.org::*%E6%9B%B4%E6%8D%A2%E9%BB%98%E8%AE%A4%E7%9A%84%E8%AF%8D%E5%BA%93%E4%B8%BA%E6%9E%81%E7%82%B9%E7%9A%84%20<2015-12-25%20Fri%2010:25>
+* Checklist
+- [ ] GTD 配置
