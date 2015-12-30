@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name:  email
+# key: em
+# contributor: dirftcrow (driftcrow@gmail.com)
+# --
+${1:$$(yas/choose-value '("driftcrow@gmail.com" "hhdslb@gmail.com" "driftcrow<AT>gmail<dot>com"))}

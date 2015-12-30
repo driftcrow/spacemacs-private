@@ -22,6 +22,7 @@
       helm-github-stars
 
       elfeed
+      4clojure
       midje-mode
       ))
 
@@ -58,7 +59,7 @@
     :config
     (progn
       (setq helm-github-stars-username "driftcrow")
-      (setq helm-github-stars-cache-file "~/.emacs.d/.cache/ghs-cache"))))
+      (setq helm-github-stars-cache-file "~/.emacs.d/.cache/hgs-cache"))))
 
 
 (defun my-misc/init-lispy ()
@@ -79,6 +80,17 @@
       (add-hook 'clojure-mode-hook (lambda () (lispy-mode 1)))
       (add-hook 'scheme-mode-hook (lambda () (lispy-mode 1)))
       (add-hook 'cider-repl-mode-hook (lambda () (lispy-mode 1))))))
+
+(defun my-misc/init-4clojure ()
+  (use-package 4clojure
+    :init
+    (progn
+      (spacemacs/declare-prefix "o4" "4clojure")
+      (evil-leader/set-key "o4q" '4clojure-open-question)
+      (evil-leader/set-key "o4n" '4clojure-next-question)
+      (evil-leader/set-key "o4p" '4clojure-previous-question)
+      (evil-leader/set-key "o4c" '4clojure-check-answers)
+      )))
 
 (defun my-misc/init-midje-mode ()
   (use-package midje-mode

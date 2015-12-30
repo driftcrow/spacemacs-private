@@ -23,9 +23,7 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     auto-completion
      better-defaults
-
      autohotkey
      emacs-lisp
      python
@@ -38,12 +36,17 @@ values."
      my-org
      latex
      (vinegar :variables vinegar-reuse-dired-buffer t)
+     (ibuffer :variables ibuffer-group-buffers-by 'projects)
 
      (shell :variables
+            shell-default-shell 'ansi-term
             shell-default-height 30
             shell-default-position 'bottom)
      (syntax-checking :variables syntax-checking-enable-by-default nil)
      (spell-checking :variables spell-checking-enable-by-default nil)
+     (auto-completion :variables
+                      auto-completion-private-snippets-directory
+                      (concat dotspacemacs-directory "snippets/"))
      osx
      version-control
      (git :variables
@@ -63,7 +66,8 @@ values."
      (colors :variables
              colors-enable-nyan-cat-progress-bar t)
      (chinese :variables chinese-default-input-method 'wubi
-              chinese-enable-youdao-dict t)
+              chinese-enable-youdao-dict t
+              )
      ;; eyebrowse
      ;; framer
      my-calendar
@@ -231,7 +235,7 @@ It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
   ;; config changes made through the customize UI will be store here
   (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
-  (load custom-file -1)
+  (load custom-file 'no-error 'no-message)
   )
 
 (defun dotspacemacs/user-config ()
@@ -257,6 +261,9 @@ layers configuration. You are free to put any user code."
     (setq-default dotspacemacs-smooth-scrolling nil))
  
   (global-company-mode t)
+
+  (add-hook 'text-mode-hook 'auto-fill-mode)
+  (add-hook 'org-mode-hook 'auto-fill-mode)
 
   (setq paradox-github-token "d2a428db66b59096e93a7210090f20e617cbcea3")
 

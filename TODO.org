@@ -15,5 +15,8 @@ CLOSED: [2015-10-30 Fri 08:53]
 ** TODO   优化 org-mode 配置     <2015-12-28 Mon 09:05>
 
  Link: file:~/.spacemacs.d/TODO.org::*%E6%9B%B4%E6%8D%A2%E9%BB%98%E8%AE%A4%E7%9A%84%E8%AF%8D%E5%BA%93%E4%B8%BA%E6%9E%81%E7%82%B9%E7%9A%84%20<2015-12-25%20Fri%2010:25>
+** TODO   如何让 inbox 中的 TODO 项完成后或者变更状态后 refile 到 works 中产生工作日志     <2015-12-28 Mon 19:58>
+
+ Link: file:~/.spacemacs.d/layers/my-org/packages.el::(setq%20org-default-works-file%20(expand-file-name%20"works.org"%20org-directory))
 * Checklist
 - [ ] GTD 配置
