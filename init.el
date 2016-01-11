@@ -58,6 +58,7 @@ values."
           ;; This is really creepy magit
           magit-revision-show-gravatars nil)
      github
+     spacemacs-ivy
      search-engine
      ranger
      gtags
@@ -256,10 +257,15 @@ layers configuration. You are free to put any user code."
     (when (spacemacs/system-is-mac)
       (spacemacs//set-monospaced-font "Source Code Pro" "Hiragino Sans GB" 14 16)))
 
+  ;; (when (spacemacs/system-is-mswindows)
+  ;;   (set-fontset-font "fontset-default" 'gb18030' ("Microsoft YaHei" . "unicode-bmp"))
+  ;;   (setq-default dotspacemacs-smooth-scrolling nil))
+
   (when (spacemacs/system-is-mswindows)
-    (set-fontset-font "fontset-default" 'gb18030' ("Microsoft YaHei" . "unicode-bmp"))
+    (set-fontset-font "fontset-default" 'gb18030' ("Courier New"     . "unicode-bmp"))
+    (set-fontset-font "fontset-default" 'gb18030' ("Microsoft YaHei"     . "unicode-bmp") nil 'prepend)
     (setq-default dotspacemacs-smooth-scrolling nil))
- 
+
   (global-company-mode t)
 
   (add-hook 'text-mode-hook 'auto-fill-mode)
