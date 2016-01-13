@@ -117,6 +117,7 @@
             ("j" "Journal Entry"
              entry (file+datetree+prompt org-default-journal-file )
              "* %?\nEntered on %U\n"
+             :kill-buffer
              :empty-lines 1)))
 
     (setq org-tags-match-list-sublevels nil)
