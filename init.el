@@ -288,9 +288,6 @@ user code."
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
-  (add-hook 'prog-mode-hook #'linum-mode)
-  (with-eval-after-load 'linum
-    (linum-relative-toggle))
 
   (setq powerline-default-separator 'arrow)
 
@@ -318,6 +315,9 @@ layers configuration. You are free to put any user code."
 
   (setq paradox-github-token "d2a428db66b59096e93a7210090f20e617cbcea3")
 
+  ;; Prevent annoying "Active processes exist" query when quit Emacs.
+  (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
+    (flet ((process-list ())) ad-do-it))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
