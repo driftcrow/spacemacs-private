@@ -1,0 +1,11 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: Header -- Private short version
+# key: hps
+# binding: direct-keybinding
+# --
+Copyright (C) ${1:`(user-full-name)`} - All Rights Reserved
+Unauthorized copying of this file, via any medium is strictly prohibited
+Proprietary and confidential
+Written by ${2:`(user-full-name)`}  <${3:`user-mail-address`}>, `(substring (current-time-string) -4)`
+
+`(let ((comment-style 'indent))(comment-region (point-min) (point-at-eol 0)))`
