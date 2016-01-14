@@ -1,6 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: Header -- Private short version
 # key: hps
+# group: file header
 # binding: direct-keybinding
 # --
 Copyright (C) ${1:`(user-full-name)`} - All Rights Reserved

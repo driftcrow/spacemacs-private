@@ -1,6 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: Header -- the GPLv2 short version
 # key: hgs
+# group: file header
 # binding: direct-keybinding
 # --
 mylib.el ---
