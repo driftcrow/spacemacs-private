@@ -294,6 +294,8 @@ layers configuration. You are free to put any user code."
   ;;clojure pretty symbols display
   (setq clojure-enable-fancify-symbols t)
 
+  (setq org-bullets-bullet-list '("◉" "◎" "⚫" "○" "►" "◇"))
+
   ;;解决org表格里面中英文对齐的问题
   (when (configuration-layer/layer-usedp 'chinese)
     (when (spacemacs/system-is-mac)

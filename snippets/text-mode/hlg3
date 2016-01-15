@@ -1,0 +1,64 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name : GNU Lesser General Public License Version 3 - Source header
+# key: hlg3
+# group: Header
+# binding: direct-keybinding
+# --
+`(file-name-nondirectory (buffer-file-name))`  ---
+
+description:
+author: ${1:`(user-full-name)`}
+maintainer:
+copyright (c) `(substring (current-time-string) -4)`, $1
+Created: `(current-time-string)`
+Version:
+Last-Updated:
+          By:
+    Update #: 0
+URL:
+Keywords:
+Compatibility:
+
+Features that might be required by this library:
+
+  None
+
+`(make-string 67 (string-to-char comment-start))`
+
+ Commentary:
+
+
+
+`(make-string 67 (string-to-char comment-start))`
+
+ Change log:
+
+
+`(make-string 67 (string-to-char comment-start))`
+
+This file is part of ${4:Foobar}.
+
+{$4} is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+{$4} is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+
+`(make-string 67 (string-to-char comment-start))`
+
+ Code:
+$0
+
+
+
+`(make-string 67 (string-to-char comment-start))`
+ `(file-name-nondirectory (buffer-file-name))`  ends here
+
+`(let ((comment-style 'indent))(comment-region (point-min) (point-at-eol 0)))`
