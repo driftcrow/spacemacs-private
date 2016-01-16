@@ -60,6 +60,7 @@ values."
      github
      spacemacs-ivy
      search-engine
+     chrome
      ranger
      gtags
      (spacemacs-layouts :variables layouts-enable-autosave t

@@ -25,7 +25,6 @@
       midje-mode
       hydra
 
-      edit-server
       elfeed
       ))
 
@@ -157,11 +156,6 @@
       (spacemacs/set-leader-keys "ha" 'hydra-apropos/body)
 
       )))
-
-(defun my-misc/init-edit-server()
-  (use-package edit-server
-    :init
-    (edit-server-start)))
 
 (defun my-misc/init-elfeed ()
   (use-package elfeed
