@@ -68,8 +68,8 @@
     (setq org-log-into-drawer t)
 
     (setq org-todo-keywords
-          (quote ((sequence "☛ TODO(t)" "➳ STARTED(s)" "|" "✔ DONE(d!/@)")
-                  (sequence "⚑ WAITING(w@/!)" "SOMEDAY(S)"  "|" "✘ CANCELLED(c@/!)" "MEETING(m)" "PHONE(p)"))))
+	  (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/@)")
+		  (sequence "WAITING(w@/!)" "SOMEDAY(S)"  "|" "CANCELLED(c@/!)" "MEETING(m)" "PHONE(p)"))))
 
     ;; 加密文章
     ;; "http://coldnew.github.io/blog/2013/07/13_5b094.html"
@@ -113,7 +113,7 @@
              "* %?\nEntered on %U\n"
              :empty-lines 1)
             ("h" "Habit" entry (file (expand-file-name "habit.org" org-directory))
-             "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n")
+             "* TODO %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:END:\n")
             ("j" "Journal Entry"
              entry (file+datetree+prompt org-default-journal-file )
              "* %?\nEntered on %U\n"
