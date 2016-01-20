@@ -58,7 +58,7 @@ values."
           ;; This is really creepy magit
           magit-revision-show-gravatars nil)
      github
-     spacemacs-ivy
+     ;; spacemacs-ivy  ; maybe waitting
      search-engine
      chrome
      ranger

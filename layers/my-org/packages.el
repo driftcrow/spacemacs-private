@@ -71,6 +71,16 @@
 	  (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/@)")
 		  (sequence "WAITING(w@/!)" "SOMEDAY(S)"  "|" "CANCELLED(c@/!)" "MEETING(m)" "PHONE(p)"))))
 
+
+    ;; Make org files behave in ediff
+    ;; unfold the entire org file within ediff
+    (add-hook 'ediff-prepare-buffer-hook 'f-ediff-prepare-buffer-hook-setup)
+    (defun f-ediff-prepare-buffer-hook-setup ()
+      ;; specific modes
+      (cond ((eq major-mode 'org-mode)
+             (visible-mode 1))
+            ))
+
     ;; 加密文章
     ;; "http://coldnew.github.io/blog/2013/07/13_5b094.html"
     (require 'org-crypt)
