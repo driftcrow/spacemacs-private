@@ -278,9 +278,10 @@ values."
 
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
-It is called immediately after `dotspacemacs/init'.  You are free to put any
-user code."
-  ;; config changes made through the customize UI will be store here
+It is called immediately after `dotspacemacs/init'.  You are free to put almost
+any user code here.  The exception is org related code, which should be placed
+in `dotspacemacs/user-config'."
+
   (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
   (load custom-file 'no-error 'no-message)
   )
@@ -302,14 +303,18 @@ layers configuration. You are free to put any user code."
     (when (spacemacs/system-is-mac)
       (spacemacs//set-monospaced-font "Source Code Pro" "Hiragino Sans GB" 14 16)))
 
-  ;; (when (spacemacs/system-is-mswindows)
-  ;;   (set-fontset-font "fontset-default" 'gb18030' ("Microsoft YaHei" . "unicode-bmp"))
-  ;;   (setq-default dotspacemacs-smooth-scrolling nil))
+  (when (configuration-layer/layer-usedp 'chinese)
+    (when (spacemacs/system-is-mswindows)
+      (spacemacs//set-monospaced-font "Courier New" "Microsoft YaHei" 14 16)))
 
   (when (spacemacs/system-is-mswindows)
-    (set-fontset-font "fontset-default" 'gb18030' ("Courier New"     . "unicode-bmp"))
-    (set-fontset-font "fontset-default" 'gb18030' ("Microsoft YaHei"     . "unicode-bmp") nil 'prepend)
-    (setq-default dotspacemacs-smooth-scrolling nil))
+    (setq tramp-default-method "plink")
+    )
+
+  ;; (when (spacemacs/system-is-mswindows)
+  ;;   (set-fontset-font "fontset-default" 'gb18030' ("Courier New"     . "unicode-bmp"))
+  ;;   (set-fontset-font "fontset-default" 'gb18030' ("Microsoft YaHei"     . "unicode-bmp") nil 'prepend)
+  ;;   (setq-default dotspacemacs-smooth-scrolling nil))
 
   (global-company-mode t)
 

@@ -57,6 +57,7 @@
     (setq org-default-notes-file (expand-file-name "inbox.org" org-directory))
     (setq org-default-works-file (expand-file-name "works.org" org-directory))
     (setq org-default-journal-file (expand-file-name "journal.org.gpg" org-directory))
+    (setq org-passwords-file (expand-file-name "passwords.org.gpg" org-directory))
     (setq org-agenda-files  (list org-directory
                                   ;; (expand-file-name "works" org-directory)
                                   ))
@@ -128,7 +129,11 @@
              entry (file+datetree+prompt org-default-journal-file )
              "* %?\nEntered on %U\n"
              :kill-buffer
-             :empty-lines 1)))
+             :empty-lines 1)
+            ("p" "password" entry (file+headline org-passwords-file "Password")
+             "* %^{Title}\n  %^{URL}p %^{USERNAME}p %^{PASSWORD}p"
+             :kill-buffer)
+            ))
 
     (setq org-tags-match-list-sublevels nil)
     ;;An entry without a cookie is treated just like priority ' B '.
