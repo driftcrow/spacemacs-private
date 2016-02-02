@@ -58,7 +58,7 @@ values."
           ;; This is really creepy magit
           magit-revision-show-gravatars nil)
      github
-     ;; spacemacs-ivy  ; maybe waitting
+     spacemacs-ivy  ; maybe waitting
      search-engine
      chrome
      ranger
@@ -72,6 +72,7 @@ values."
               chinese-enable-youdao-dict t)
      ;; eyebrowse
      ;; framer
+     dash
      my-calendar
      my-misc
      )
@@ -296,7 +297,8 @@ layers configuration. You are free to put any user code."
   ;;clojure pretty symbols display
   (setq clojure-enable-fancify-symbols t)
 
-  (setq org-bullets-bullet-list '("◉" "◎" "⚫" "○" "►" "◇"))
+  ;; (setq org-bullets-bullet-list '("✺" "✹" "✸" "✷" "✶" "✭" "✦" "■" "▲" "●" ))
+  (setq org-bullets-bullet-list '("✺" "✸" "✭" "✦" "■" "▲" "●" ))
 
   ;;解决org表格里面中英文对齐的问题
   (when (configuration-layer/layer-usedp 'chinese)
