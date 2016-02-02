@@ -11,6 +11,9 @@ values."
    ;; `+distribution'. For now available distributions are `spacemacs-base'
    ;; or `spacemacs'. (default 'spacemacs)
    dotspacemacs-distribution 'spacemacs
+   ;; If non-nil layers with lazy install support are lazy installed.
+   ;; (default nil)
+   dotspacemacs-enable-lazy-installation nil
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
@@ -126,7 +129,7 @@ values."
    ;; If the value is nil then no banner is displayed. (default 'official)
    dotspacemacs-startup-banner nil
    ;; List of items to show in the startup buffer. If nil it is disabled.
-   ;; Possible values are: `recents' `bookmarks' `projects'.
+   ;; Possible values are: `recents' `bookmarks' `projects' `agenda' `todos'.
    ;; (default '(recents projects))
    dotspacemacs-startup-lists '(recents projects bookmarks)
    ;; Number of recent files to show in the startup buffer. Ignored if
@@ -241,11 +244,15 @@ values."
    ;; the transparency level of a frame when it's inactive or deselected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
    dotspacemacs-inactive-transparency 90
+   ;; If non nil show the titles of transient states. (default t)
+   dotspacemacs-show-transient-state-title t
+   ;; If non nil show the color guide hint for transient state keys. (default t)
+   dotspacemacs-show-transient-state-color-guide t
    ;; If non nil unicode symbols are displayed in the mode line. (default t)
    dotspacemacs-mode-line-unicode-symbols t
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
-   ;; scrolling overrides the default behavior of Emacs which recenters the
-   ;; point when it reaches the top or bottom of the screen. (default t)
+   ;; scrolling overrides the default behavior of Emacs which recenters point
+   ;; when it reaches the top or bottom of the screen. (default t)
    dotspacemacs-smooth-scrolling t
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
@@ -310,7 +317,42 @@ layers configuration. You are free to put any user code."
       (spacemacs//set-monospaced-font "Courier New" "Microsoft YaHei" 14 16)))
 
   (when (spacemacs/system-is-mswindows)
-    (setq tramp-default-method "plink")
+    (eval-after-load "tramp"
+      '(progn
+         (add-to-list 'tramp-methods
+                      (list "plink-i"
+                            '(tramp-login-program "plink")
+                            (cons 'tramp-login-args
+                                  (list (list
+                                         '("-l" "%u")
+                                         '("-P" "%p")
+                                         '("-ssh")
+                                         '("-t")
+                                         '("-a")
+                                         '("-x")
+                                         (if (equal system-type 'windows-nt)
+                                             (progn
+                                               (setq keyfilename (expand-file-name (concat (getenv "HOME") "/.ssh/id_rsa.ppk")))
+                                               (if (file-exists-p keyfilename)
+                                                   (list "-i" (concat "\"" keyfilename "\"")))))
+                                         '("%h")
+                                         '("\"")
+                                         '("env 'TERM=dumb' 'PROMPT_COMMAND=' 'PS1=#$ '")
+                                         '("/bin/sh")
+                                         '("\"")
+                                         )))
+                            '(tramp-remote-shell "/bin/sh")
+                            '(tramp-remote-shell-login ("-l"))
+                            '(tramp-remote-shell-args ("-c"))
+                            '(tramp-default-port 22))
+                      t)
+
+         ;; tramp backup path (if not set, save in local backup directory)
+         (setq tramp-backup-directory-alist nil)
+         (setq tramp-auto-save-directory nil)))
+
+    (setq tramp-default-method "plink-i")
+    ;; (setq tramp-default-method "plink -i %HOME%\.ssh\id_rsa.ppk")
     )
 
   ;; (when (spacemacs/system-is-mswindows)
