@@ -33,6 +33,8 @@ values."
      (clojure :variables clojure-enable-fancify-symbols t)
      html
      javascript
+     shell-scripts
+     windows-scripts
      restclient
      markdown
      org
