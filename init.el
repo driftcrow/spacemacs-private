@@ -39,7 +39,6 @@ values."
      markdown
      (vinegar :variables vinegar-reuse-dired-buffer t)
      org
-     my-org
      latex
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
 
@@ -78,8 +77,7 @@ values."
      ;; eyebrowse
      ;; framer
      dash
-     my-calendar
-     my-misc
+     liubin
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -129,7 +127,7 @@ values."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 'random
+   dotspacemacs-startup-banner 'official
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects' `agenda' `todos'.
    ;; (default '(recents projects))
@@ -310,9 +308,6 @@ layers configuration. You are free to put any user code."
   ;;clojure pretty symbols display
   (setq clojure-enable-fancify-symbols t)
 
-  ;; (setq org-bullets-bullet-list '("✺" "✹" "✸" "✷" "✶" "✭" "✦" "■" "▲" "●" ))
-  (setq org-bullets-bullet-list '("✺" "✸" "✭" "✦" "■" "▲" "●" ))
-
   ;;解决org表格里面中英文对齐的问题
   (when (configuration-layer/layer-usedp 'chinese)
     (when (spacemacs/system-is-mac)
@@ -320,7 +315,9 @@ layers configuration. You are free to put any user code."
 
   (when (configuration-layer/layer-usedp 'chinese)
     (when (spacemacs/system-is-mswindows)
-      (spacemacs//set-monospaced-font "Courier New" "Microsoft YaHei" 14 16)))
+      (spacemacs//set-monospaced-font "Source Code Pro" "Microsoft YaHei" 14 16)
+      ;; (spacemacs//set-monospaced-font "Consolas" "Microsoft YaHei" 14 16)
+      ))
 
   (when (spacemacs/system-is-mswindows)
     (eval-after-load "tramp"
