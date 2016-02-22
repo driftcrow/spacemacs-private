@@ -370,6 +370,7 @@ Each entry is either:
     (progn
       (add-to-list 'org-modules 'org-habit)
       (require 'org-habit)
+      (add-to-list 'org-src-lang-modes (quote ("dot" . graphviz-dot)))
 
       (setq org-directory "~/org")
       (setq org-default-notes-file (expand-file-name "inbox.org" org-directory))
@@ -666,5 +667,5 @@ Each entry is either:
 (defun liubin/init-graphviz-dot-mode ()
     (use-package graphviz-dot-mode
       :init
-      (add-to-list 'org-src-lang-modes (quote ("dot" . graphviz-dot))) ))
+       ))
 ;;; packages.el ends here

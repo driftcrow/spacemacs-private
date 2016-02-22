@@ -26,33 +26,51 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     spacemacs-helm
+     spacemacs-ivy
      better-defaults
-     autohotkey
-     emacs-lisp
-     python
-     (clojure :variables clojure-enable-fancify-symbols t)
-     html
-     javascript
-     shell-scripts
-     windows-scripts
-     restclient
+     github
+     (version-control :variables version-control-diff-tool 'git-gutter+
+                      version-control-global-margin t)
+     osx
+     semantic                           ; too slow
      markdown
      (vinegar :variables vinegar-reuse-dired-buffer t)
      org
-     latex
-     (ibuffer :variables ibuffer-group-buffers-by 'projects)
-
-     (shell :variables
-            shell-default-shell 'ansi-term
-            shell-default-height 30
-            shell-default-position 'bottom)
+     prodigy
+     search-engine
      (syntax-checking :variables syntax-checking-enable-by-default nil)
      (spell-checking :variables spell-checking-enable-by-default nil)
-     (auto-completion :variables
-                      auto-completion-private-snippets-directory
-                      (concat dotspacemacs-directory "snippets/"))
-     osx
-     version-control
+     yaml
+     ;; (ruby :variables ruby-version-manager 'rvm)
+     autohotkey
+     python
+     ;; lua
+     html
+     command-log
+     javascript
+     shell-scripts
+     windows-scripts
+     ;; restclient
+     emacs-lisp
+     (clojure :variables clojure-enable-fancify-symbols t)
+     ;; (vinegar :variables vinegar-reuse-dired-buffer t)
+     latex
+     dash
+     ;; emoji
+     ;; ycmd
+     ;; fasd
+     ;; deft
+     ;; elfeed
+     ranger
+     ;; racket
+     chrome
+     gtags
+     (spacemacs-layouts :variables layouts-enable-autosave t
+                        layouts-autosave-delay 300)
+     eyebrowse
+     (colors :variables
+             colors-enable-nyan-cat-progress-bar t)
      (git :variables
           git-magit-status-fullscreen t
           magit-push-always-verify nil
@@ -61,22 +79,23 @@ values."
           magit-refs-show-commit-count 'all
           ;; This is really creepy magit
           magit-revision-show-gravatars nil)
-     github
-     spacemacs-ivy  ; maybe waitting
-     search-engine
-     chrome
-     ranger
-     gtags
-     (spacemacs-layouts :variables layouts-enable-autosave t
-                        layouts-autosave-delay 300)
-     (colors :variables
-             colors-enable-nyan-cat-progress-bar t)
-     (chinese :variables
-              chinese-default-input-method 'wubi
+     (ibuffer :variables ibuffer-group-buffers-by 'projects)
+     (c-c++ :variables
+            c-c++-default-mode-for-headers 'c++-mode)
+     (auto-completion :variables
+                      auto-completion-enable-snippets-in-popup t
+                      auto-completion-private-snippets-directory
+                      (concat dotspacemacs-directory "snippets/"))
+     (shell :variables
+            shell-default-position 'full
+            shell-default-shell 'ansi-term
+            ;; shell-default-term-shell "/bin/zsh"
+            ;; shell-default-height 30
+            ;; shell-default-position 'bottom
+            )
+     (chinese :variables chinese-default-input-method 'wubi
               chinese-enable-youdao-dict t)
-     ;; eyebrowse
-     ;; framer
-     dash
+
      liubin
      )
    ;; List of additional packages that will be installed without being
@@ -85,9 +104,37 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '()
    ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages '(
+   dotspacemacs-excluded-packages '(magit-gh-pulls
+                                    evil-mc
+                                    org-plus-contrib
+                                    skewer-mode
+                                    emmet-mode
+                                    ;; chinese-wbim
+                                    chinese-pyim
+                                    company-statistics
+                                    srefactor
+                                    org-timer
+                                    org-tree-slide
+                                    git-gutter
+                                    git-gutter-fringe
+                                    ;;At first, I should disable hydra in zilongshanren layer and install clj-refactor, after it is installed.
+                                    ;; I could re-enable it again in zilongshanren layer.
+                                    ;; clj-refactor
+                                    ;;remove from spacemacs distribution
+                                    ;; neotree
+                                    leuven-theme
+                                    gh-md
+                                    evil-lisp-state
+                                    spray
+                                    evil-tutor
+                                    define-word
+                                    doc-view
+                                    lorem-ipsum
                                     solarized-theme
-                                    )
+                                    ;; remove mode for python layer
+                                    nose
+                                    pony-mode
+                                    hy-mode)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
@@ -191,7 +238,7 @@ values."
    dotspacemacs-display-default-layout nil
    ;; If non nil then the last auto saved layouts are resume automatically upon
    ;; start. (default nil)
-   dotspacemacs-auto-resume-layouts t
+   dotspacemacs-auto-resume-layouts nil
    ;; Location where to auto-save files. Possible values are `original' to
    ;; auto-save the file in-place, `cache' to auto-save the file to another
    ;; file stored in the cache directory and `nil' to disable auto-saving.
@@ -235,7 +282,7 @@ values."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -264,7 +311,7 @@ values."
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
    ;; over any automatically added closing parenthesis, bracket, quote, etc…
    ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
-   dotspacemacs-smart-closing-parenthesis nil
+   dotspacemacs-smart-closing-parenthesis t
    ;; Select a scope to highlight delimiters. Possible values are `any',
    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
    ;; emphasis the current one). (default 'all)
@@ -304,9 +351,6 @@ This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
   (setq powerline-default-separator 'arrow)
-
-  ;;clojure pretty symbols display
-  (setq clojure-enable-fancify-symbols t)
 
   ;;解决org表格里面中英文对齐的问题
   (when (configuration-layer/layer-usedp 'chinese)
@@ -370,9 +414,90 @@ layers configuration. You are free to put any user code."
 
   (setq paradox-github-token "d2a428db66b59096e93a7210090f20e617cbcea3")
 
+  (remove-hook 'emacs-lisp-mode-hook 'auto-compile-mode)
+  (define-key helm-find-files-map (kbd "s-c") 'helm-ff-run-copy-file)
+
+  ;; http://emacsredux.com/blog/2014/04/05/which-function-mode/
+  ;; when editing js file, this feature is very useful
+  ;; (setq-default header-line-format
+  ;;               '((which-func-mode ("" which-func-format " "))))
+  (setq mode-line-misc-info
+        ;; We remove Which Function Mode from the mode line, because it's mostly
+        ;; invisible here anyway.
+        (assq-delete-all 'which-func-mode mode-line-misc-info))
+
+  (add-hook 'prog-mode-hook
+            (lambda ()
+              (when (> (buffer-size) 100000)
+                (turn-off-show-smartparens-mode))))
+
+  ;; improve the performance of opening large file
+  (add-hook 'org-mode-hook (lambda () (spacemacs/toggle-line-numbers-off)) 'append)
+  (defun spacemacs/check-large-file ()
+    (when (> (buffer-size) 100000)
+      (progn (fundamental-mode)
+             (hl-line-mode -1))))
+
+  (add-hook 'find-file-hook 'spacemacs/check-large-file)
+
+  ;; http://bling.github.io/blog/2016/01/18/why-are-you-changing-gc-cons-threshold/
+  ;; (defun my-minibuffer-setup-hook ()
+  ;;   (setq gc-cons-threshold 100000000))
+
+  ;; (defun my-minibuffer-exit-hook ()
+  ;;   (setq gc-cons-threshold 800000))
+
+  ;; (add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
+  ;; (add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
+
+  ;; For python
+  (add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+  ;; For ruby
+  (add-hook 'ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+  ;; For Javascript
+  (add-hook 'js2-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+
   ;; Prevent annoying "Active processes exist" query when quit Emacs.
   (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
     (flet ((process-list ())) ad-do-it))
+
+  ;; http://endlessparentheses.com/ispell-and-abbrev-the-perfect-auto-correct.html
+  (define-key ctl-x-map "\C-i"
+    #'endless/ispell-word-then-abbrev)
+
+  (defun endless/ispell-word-then-abbrev (p)
+    "Call `ispell-word', then create an abbrev for it.
+With prefix P, create local abbrev. Otherwise it will
+be global.
+If there's nothing wrong with the word at point, keep
+looking for a typo until the beginning of buffer. You can
+skip typos you don't want to fix with `SPC', and you can
+abort completely with `C-g'."
+    (interactive "P")
+    (let (bef aft)
+      (save-excursion
+        (while (if (setq bef (thing-at-point 'word))
+                   ;; Word was corrected or used quit.
+                   (if (ispell-word nil 'quiet)
+                       nil ; End the loop.
+                     ;; Also end if we reach `bob'.
+                     (not (bobp)))
+                 ;; If there's no word at point, keep looking
+                 ;; until `bob'.
+                 (not (bobp)))
+          (backward-word))
+        (setq aft (thing-at-point 'word)))
+      (if (and aft bef (not (equal aft bef)))
+          (let ((aft (downcase aft))
+                (bef (downcase bef)))
+            (define-abbrev
+              (if p local-abbrev-table global-abbrev-table)
+              bef aft)
+            (message "\"%s\" now expands to \"%s\" %sally"
+                     bef aft (if p "loc" "glob")))
+        (user-error "No typo at or before point"))))
+
+  (setq save-abbrevs 'silently)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
