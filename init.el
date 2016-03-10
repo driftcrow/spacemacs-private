@@ -26,7 +26,7 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     spacemacs-helm
+     ;; spacemacs-helm
      spacemacs-ivy
      better-defaults
      github
@@ -54,7 +54,7 @@ values."
      ;; restclient
      emacs-lisp
      (clojure :variables clojure-enable-fancify-symbols t)
-     ;; (vinegar :variables vinegar-reuse-dired-buffer t)
+     (vinegar :variables vinegar-reuse-dired-buffer t)
      latex
      dash
      ;; emoji
@@ -83,6 +83,7 @@ values."
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode)
      (auto-completion :variables
+                      auto-completion-enable-sort-by-usage t
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-private-snippets-directory
                       (concat dotspacemacs-directory "snippets/"))
@@ -96,6 +97,8 @@ values."
      (chinese :variables chinese-default-input-method 'wubi
               chinese-enable-youdao-dict t)
 
+     plantuml
+     ;; docker
      liubin
      )
    ;; List of additional packages that will be installed without being
@@ -106,7 +109,7 @@ values."
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(magit-gh-pulls
                                     evil-mc
-                                    org-plus-contrib
+                                    ;; org-plus-contrib
                                     skewer-mode
                                     emmet-mode
                                     ;; chinese-wbim
@@ -127,7 +130,6 @@ values."
                                     evil-lisp-state
                                     spray
                                     evil-tutor
-                                    define-word
                                     doc-view
                                     lorem-ipsum
                                     solarized-theme
@@ -415,7 +417,6 @@ layers configuration. You are free to put any user code."
   (setq paradox-github-token "d2a428db66b59096e93a7210090f20e617cbcea3")
 
   (remove-hook 'emacs-lisp-mode-hook 'auto-compile-mode)
-  (define-key helm-find-files-map (kbd "s-c") 'helm-ff-run-copy-file)
 
   ;; http://emacsredux.com/blog/2014/04/05/which-function-mode/
   ;; when editing js file, this feature is very useful

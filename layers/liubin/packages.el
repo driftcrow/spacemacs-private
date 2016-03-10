@@ -47,7 +47,9 @@
     elfeed
 
     cal-china-x
+    chinese-wbim
 
+    beacon
     (org :location built-in)
     org-bullets
     ox-reveal
@@ -217,6 +219,22 @@ Each entry is either:
 
       )))
 
+(defun liubin/post-init-chinese-wbim ()
+  (progn
+    ;; [[http://emacs.stackexchange.com/questions/352/how-to-override-major-mode-bindings][keymap - How to override major mode bindings - Emacs Stack Exchange]]
+    (bind-key* ";" 'chinese-wbim-insert-ascii)
+    (setq chinese-wbim-punc-translate-p nil)
+    (spacemacs/declare-prefix "ot" "Toggle")
+    (spacemacs/set-leader-keys
+      "otp" 'chinese-wbim-punc-translate-toggle)
+    (setq chinese-wbim-wb-use-gbk t)
+    (add-hook 'chinese-wbim-wb-load-hook
+              (lambda ()
+                (let ((map (chinese-wbim-mode-map)))
+                  (define-key map "-" 'chinese-wbim-previous-page)
+                  (define-key map "=" 'chinese-wbim-next-page))))
+    ))
+
 (defun liubin/init-elfeed ()
   (use-package elfeed
     :init
@@ -365,6 +383,17 @@ Each entry is either:
     :init
     (org-download-enable)))
 
+(defun liubin/init-beacon ()
+  (use-package beacon
+    :init
+    (progn
+      (spacemacs|add-toggle beacon
+        :status beacon-mode
+        :on (beacon-mode)
+        :off (beacon-mode -1)
+        :documentation "Enable point highlighting after scrolling"
+        :evil-leader "otb"))))
+
 (defun liubin/post-init-org ()
   (with-eval-after-load 'org
     (progn
@@ -398,6 +427,21 @@ Each entry is either:
             '((nil :maxlevel . 4)
               (org-agenda-files :maxlevel . 4)))
 
+      ;; http://stackoverflow.com/questions/25437069/how-can-i-mark-org-habits-as-done-in-the-past#
+
+      (defun org-todo-custom-date (&optional arg)
+        "Like org-todo-yesterday, but prompt the user for a date. The time
+of change will be 23:59 on that day"
+        (interactive "P")
+        (let* ((hour (nth 2 (decode-time
+                             (org-current-time))))
+               (daysback (- (date-to-day (current-time-string)) (org-time-string-to-absolute (org-read-date))))
+               (org-extend-today-until (+ 1 (* 24 (- daysback 1)) hour))
+               (org-use-effective-time t)) ; use the adjusted timestamp for logging
+          (if (eq major-mode 'org-agenda-mode)
+              (org-agenda-todo arg)
+            (org-todo arg))))
+      (spacemacs/set-leader-keys-for-major-mode 'org-agenda-mode "t" 'org-todo-yesterday)
       ;; Make org files behave in ediff
       ;; unfold the entire org file within ediff
       (add-hook 'ediff-prepare-buffer-hook 'f-ediff-prepare-buffer-hook-setup)

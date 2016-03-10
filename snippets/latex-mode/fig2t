@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: figure with 2 title
+# key: fig2t
+# --
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=${1:0.6\textwidth}]{${2:path}}
+  \bicaption[${3:fig:SRR}]{${4:这里将出现在插图索引中}}{${5:中文题图}}{Fig}{${6:English caption}}
+\end{figure}
